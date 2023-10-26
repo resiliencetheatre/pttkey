@@ -1,0 +1,17 @@
+[Unit]
+Description=pttkey service
+After=multi-user.target 
+
+[Service]
+User=tech
+WorkingDirectory=/opt/pttkey
+KillMode=process
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+Environment="PULSE_RUNTIME_PATH=/run/user/1000/pulse/"
+ExecStart=/usr/local/bin/pttkey -i pttkey.ini
+Restart=always
+RestartSec=10
+TimeoutStartSec=5
+
+[Install]
+WantedBy=multi-user.target
